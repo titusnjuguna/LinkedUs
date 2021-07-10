@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head> 
+{% load crispy_forms_tags %}
+{% load static %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link  href="{% static 'css/w3.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="bootstrap-icons-1.5.0/" >
+    <title>
+        Wira App
+    </title>
+</head>
+<body >
+    <div id="header">
+        <h6 style="font-weight:bolder;font-size:3em;">Linked<span style="padding:5px 0 5px 0;background-color: #034F84;">US</span></h6>
+    </div>
+    <div id=search>
+        <nav class="w3-navbar navbar-inverse">
+            <ul class="nav navbar-nav" style="display:inline; left:30px;float:right;">
+                <!--li class="active"><a href="#">Home</a></li-->
+                <li><button type="submit"><a href="{%url 'Register'%}" onclick="document.getElementById('id02' ).style.display='block'">Sign Up</a></button></li>
+                <li><a href="{% url 'Login'%}" onclick="document.getElementById('id01' ).style.display='block'"><button type="Submit" formtarget="_self">Login</button></a></li>
+                <li><button type="submit" style="padding:3px 20px;background:yellowgreen;margin-top:8px;color:black;"><a href="{%url 'Job-create'%}">Post Job</a></button></li>
+            </ul>
+        </nav>
+    </div>
+    {% block content %}
+    <div id="tab" class="w3-row-padding">
+        <form  class="form-inline" method="POST" action="">
+            {% csrf_token %}
+            <select name=location>
+                <option selected disable=true >--Select Location--</option>
+                <option>Nairobi</option>
+                <option>Nakuru</option>
+                <option>Mombasa</option>
+                <option>Kisumu</option>
+                <option>Siaya</option>
+                <option>Homabay</option>
+                <option>Eldoret</option>
+                <option>Nairobi</option>
+                <option>Nakuru</option>
+                <option>Mombasa</option>
+                <option>Kisumu</option>
+                <option>Siaya</option>
+                <option>Homabay</option>
+                <option>Eldoret</option>
+                <option>Nairobi</option>
+                <option>Nakuru</option>
+                <option>Mombasa</option>
+                <option>Kisumu</option>
+                <option>Siaya</option>
+                <option>Homabay</option>
+                <option>Eldoret</option>
+                <option>Nairobi</option>
+                <option>Nakuru</option>
+                <option>Mombasa</option>
+                <option>Kisumu</option>
+                <option>Siaya</option>
+                <option>Homabay</option>
+                <option>Eldoret</option>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </select>
+            <select name=experience>
+                <option selected disable=true >--Choose Your Experience--</option>
+                <option>Internship</option>
+                <option>Junior</option>
+                <option>Intermediate</option>
+                <option>Senior</option>
+            </select>
+            <input type="text" value=''>
+                   
+              
+        </form>
+       
+    </div>
+    {% endblock content %}
+        <br>
+        <div>
+        <p style="position:relative;text-align:center;top:15px;">
+            <button id="search23" type="submit" >Search</button>
+        </p>
+        </div>
+    </div>
+    <hr>
+    <div id="job" style="width:100%;">
+        <h4 style="text-align:center;padding:15px;background-color:#D65076;color:black;font-weight:500;">Top Jobs</h4>
+    </div>
+        
+        <!--div class="row" style="">
+            <div class="col-4">
+                <div class="flex-container">
+                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
+                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
+                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
+                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="flex-container">
+                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
+                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
+                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
+                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
+                </div>    
+            </div>
+            <div class="col-12">
+                <div class="flex-container">
+                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
+                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
+                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
+                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
+                </div>
+            </div>
+        </div>    
+    </div-->
+        <!--div class="flex-container">
+                <div class="w3-card"></div>
+                <div class="w3-card"></div>
+                <div class="w3-card"></div>
+                <div class="w3-card"></div>
+        </div-->
+
+
+
+
+            {% for jobObj in Jobs %}
+            <div style="margin-left:60px;">
+                
+                <div class="w3-card-8 w3-margin" style="width:80%;float:unset;">
+                        <header class="w3-container w3-blue">
+                            <h6>{{Jobs.title}}</h6>
+                        </header>
+                        <div class="w3-container">
+                            <p>
+                                {{Jobs.description}}
+                            </p>
+                            <p>
+                                <h3>{{Jobs.location}}</h3>
+                            </p>
+                            <p>
+                                <button class="w3-btn "style="border-radius:50%;float:right;background-color:#034F84;">
+                                    +
+                                </button>
+                            </p>
+                        </div>
+                        <footer class="w3-container w3-blue">
+                            <h3>Salary:{{Jobs.salary}}</h3>
+                        </footer>
+               
+                </div>
+                {% endfor %}
+                <!--section2-->
+                <!--div class="w3-card-8 w3-margin" style="width:80%;float:unset;">
+                        <header class="w3-container w3-blue">
+                            <h6>Head Of Finance</h6>
+                        </header>
+                        <div class="w3-container">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                            <p>
+                                <a href=""><button class="w3-btn "style="border-radius:50%;float:right;background-color:#034F84;">
+                                    +
+                                </button></a>
+                            </p>
+                        </div>
+                        <footer class="w3-container w3-blue">
+                            <h3>Salary:ksh30,000</h3>
+                        </footer>
+                </div-->
+        <!--Section3-->  
+        <!--div class="w3-card-8 w3-margin" style="width:80%;float:unset;">
+                <header class="w3-container w3-blue">
+                    <h6>Head Of Finance</h6>
+                </header>
+                <div class="w3-container">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        <button class="w3-btn " style="border-radius:50%;float:right;background-color:#034F84;">
+                            +
+                        </button>
+                    </p>
+                </div>
+                <footer class="w3-container w3-blue">
+                    <h3>Salary:ksh30,000</h3>
+                </footer>
+        </div>
+    </div-->
+        <!--section4-->
+        
+    
+<!-----------------------------Login-------------------------------------------------->
+
+<!-------------------------------------------------------------------------------->
+
+<!--Register---------------------------------------->
+<!--div id="id02" class="w3-modal">
+        <span onclick="getElementById('id02').style.display='none'" class="w3-closebtn w3-hover-red w3-container w3-padding-16 w3-display-topright">×</span>"
+        <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:300px">
+      
+                <div class="w3-center"><br>
+                  <img src="img_avatar4.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+                </div>
+                <div class="w3-container">
+                        <div class="w3-section">
+                          <label><b>Username</b></label>
+                          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username">
+                          <label><b>Email</b></label>
+                          <input class="w3-input w3-border" type="text" placeholder="Enter Email">
+                          <label><b>Password</b></label>
+                          <input class="w3-input w3-border" type="text" placeholder="Enter Password">
+                          <label><b>Confirm Password</b></label>
+                          <input class="w3-input w3-border" type="text" placeholder="Confirm Password">
+                  
+                          <button class="w3-btn w3-btn-block w3-green">Register</button>
+                          <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
+                        </div>
+                      </div>
+                  
+                      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-btn w3-red">Cancel</button>
+                        <span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
+                      </div>
+                  
+                    </div>
+                  </div>        
+    </div-->
+<!-------------------------------------------------->
+<hr>
+<!--------------------------------------------------------------------------------->    
+    <div id="client1"style="padding:10px;background-color:#45B8AC;color:black;">
+        <h5 style="text-align:center;font-weight:bold;font-size:25px;top:5px;">Top Employers</h5>
+    </div>
+    <div id = clients>    
+        <img src="{% static 'img/orient 13.png' %}" style="border-radius:50%;height:150px;width:150px;margin:7px;">
+        <img src="{% static 'img/naivas 5.png'%}" style="border-radius:50%;height:150px;width:150px;margin:7px;">
+        <img src="{% static 'img/meru 10.png'%}" style="border-radius:50%;height:150px;width:150px;margin:7px;">
+        <img src="{% static 'img/kcb 4.jfif'%}" style="border-radius:50%;height:150px;width:150px;margin:7px;">
+        <img src="{% static 'img/red 6.png'%}" style="border-radius:50%;height:150px;width:150px;margin:7px;">
+        <img src="{%static 'img/mpesa 7.png'%}" style="border-radius:50%;height:150px;width:150px;margin:7px;">
+        <img src="{% static 'img/kfs 12.png'%}" style="border-radius:50%;height:150px;width:150px;margin:7px;">
+        
+
+    </div>
+<!--------------------------------------------------------------------------------->    
+    <div id="link" style="border:;">
+        <h5 style="text-align:center;margin-top:0;color:black;font-weight:500;">Contacts</h5>
+    </div>
+    <div id="contact"class="">
+        <i></i>
+           
+    </div>
+          
+        
+</div>            
+        
+
+    
+</body> 
+    <div id="footer">
+        <p>Copy Right&copy  |  2019-2021 | LINKUS HR AGENCY  |   API |<a href="#">About Us</a>|<a href="#">Blog</a> |<a href="#"> Term of Use</a> |<a href="#"> Privacy and Policy</a> |<a href="#"> Support </a></p>
+        
+
+    </div>
+    
+
+
+</html>
+    
+        <!--ul class="w3-navbar w3-blue" style="width:100%;padding:10px;">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="#">Login</a></li>
+        </ul>
+        <div class="w3-display-container" style="height:50%;">
+            <!--img src="bj.jpg">
+        </div>
+        <div class="w3-row-padding" style="background-color:darkgoldenrod;min-height:150px; margin-top:20px;">
+            <div class="w3-container w3-third ">
+                <input type="text" name = "Industry"value="Industry">
+                
+            </div>
+            <div class="w3-container w3-third">
+                <input type="text" name="keyword"value="">
+            </div>
+            <div class="w3-container w3-third">
+                <input type="text" name="Experience" value="">
+            </div> 
+            <button type="submit">Search</button> 
+        </div> 
+        <div class="w3-row">
+                
+                
+        </div>
+          
+
+
+<!--footer class="w3-container w3-teal">
+ <p> My footer content will go here</p>
