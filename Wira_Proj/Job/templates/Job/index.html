@@ -1,327 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
+    <head> 
 <head> 
-{% load crispy_forms_tags %}
-{% load static %}
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link  href="{% static 'css/w3.css' %}" rel="stylesheet">
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-    <link href="bootstrap-icons-1.5.0/" >
-    <title>
-        Wira App
-    </title>
-</head>
-<body >
-    <div id="header">
-        <h6 style="font-weight:bolder;font-size:3em;">Linked<span style="padding:5px 0 5px 0;background-color: #034F84;">US</span></h6>
-    </div>
-    <div id=search>
-        <nav class="w3-navbar navbar-inverse">
-            <ul class="nav navbar-nav" style="display:inline; left:30px;float:right;">
-                <!--li class="active"><a href="#">Home</a></li-->
-                <li><button type="submit"><a href="{%url 'Register'%}" onclick="document.getElementById('id02' ).style.display='block'">Sign Up</a></button></li>
-                <li><a href="{% url 'Login'%}" onclick="document.getElementById('id01' ).style.display='block'"><button type="Submit" formtarget="_self">Login</button></a></li>
-                <li><button type="submit" style="padding:3px 20px;background:yellowgreen;margin-top:8px;color:black;"><a href="{%url 'Job-create'%}">Post Job</a></button></li>
-            </ul>
-        </nav>
-    </div>
-    {% block content %}
-    <div id="tab" class="w3-row-padding">
-        <form  class="form-inline" method="POST" action="">
-            {% csrf_token %}
-            <select name=location>
-                <option selected disable=true >--Select Location--</option>
-                <option>Nairobi</option>
-                <option>Nakuru</option>
-                <option>Mombasa</option>
-                <option>Kisumu</option>
-                <option>Siaya</option>
-                <option>Homabay</option>
-                <option>Eldoret</option>
-                <option>Nairobi</option>
-                <option>Nakuru</option>
-                <option>Mombasa</option>
-                <option>Kisumu</option>
-                <option>Siaya</option>
-                <option>Homabay</option>
-                <option>Eldoret</option>
-                <option>Nairobi</option>
-                <option>Nakuru</option>
-                <option>Mombasa</option>
-                <option>Kisumu</option>
-                <option>Siaya</option>
-                <option>Homabay</option>
-                <option>Eldoret</option>
-                <option>Nairobi</option>
-                <option>Nakuru</option>
-                <option>Mombasa</option>
-                <option>Kisumu</option>
-                <option>Siaya</option>
-                <option>Homabay</option>
-                <option>Eldoret</option>
+    <head> 
+        {% load crispy_forms_tags %}
+        {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link  href="{% static 'css/w3.css' %}" rel="stylesheet">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+        <link href="bootstrap-icons-1.5.0/" >
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </select>
-            <select name=experience>
-                <option selected disable=true >--Choose Your Experience--</option>
-                <option>Internship</option>
-                <option>Junior</option>
-                <option>Intermediate</option>
-                <option>Senior</option>
-            </select>
-            <input type="text" value=''>
-                   
-              
-        </form>
-       
-    </div>
-    {% endblock content %}
-        <br>
-        <div>
-        <p style="position:relative;text-align:center;top:15px;">
-            <button id="search23" type="submit" >Search</button>
-        </p>
-        </div>
-    </div>
-    <hr>
-    <div id="job" style="width:100%;">
-        <h4 style="text-align:center;padding:15px;background-color:#D65076;color:black;font-weight:500;">Top Jobs</h4>
-    </div>
-        
-        <!--div class="row" style="">
-            <div class="col-4">
-                <div class="flex-container">
-                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
-                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
-                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
-                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
-                </div>
-            </div>
-            <div class="col-8">
-                <div class="flex-container">
-                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
-                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
-                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
-                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
-                </div>    
-            </div>
-            <div class="col-12">
-                <div class="flex-container">
-                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
-                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
-                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
-                    <div id="kadi"class="w3-card-12 w3-yellow"></div>
-                </div>
-            </div>
-        </div>    
-    </div-->
-        <!--div class="flex-container">
-                <div class="w3-card"></div>
-                <div class="w3-card"></div>
-                <div class="w3-card"></div>
-                <div class="w3-card"></div>
+        <title>Wira App</title>
+    </head>
+    <body >
+        <!--div id="header">
+            <h6 style="font-weight:bolder;font-size:3em;">Linked<span style="padding:5px 0 5px 0;background-color: #034F84;border-radius:6px">US</span></h6>
         </div-->
+        <div id=search>
+            <nav class="w3-navbar navbar-inverse">
+                <h6 style="font-weight:bolder;font-size:2em;position:relative;float:left;top:10px;">Linked<span style="padding:0px 0 0px 0;background-color: #000;border-radius:7px">US</span></h6>
+                <ul class="nav navbar-nav" style="display:inline; left:30px;float:right;text-align:center;">
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'Job-create' %}">Post Job</a></li>
+                    <li><!--button type="submit"--><a href="{% url 'Logout'%}"> Logout </a><!--/button--></li>
+                    <li><img href="{% url 'Profile_Page' %}"src="{{user.profile.image.url}}"style="border-radius:50%;height: 50px;width: 50px;margin-right: 20px;margin-bottom: 2px;"></li>
+                    
+                    {% else %}
+                    <li><!--button type="submit"--><a href="{% url 'Register' %}" onclick="document.getElementById('id02' ).style.display='block';">Sign Up</a><!--/button--></li>
+                    <li><a href="{% url 'Login'%}" onclick="document.getElementById('id01' ).style.display='block'"><!--button type="Submit" formtarget="_self"-->Login<!--/button--></a></li>
+                    {% endif %}    
+                </ul>
+            </nav>
+        </div>
+        {% block content %}
+        <div class="jumbotron">
+        <div class="container" >
+          <div class="card">  
+            <div class="card-body bg-light">        
 
+            <form class="form-inline center"  method="GET" action="{% url 'search-result' %}">
+                {% csrf_token %}
+                <select name="location" id ="select23" class="custom-select">
+                    <option selected disable=true >--Select County--</option>
+                    <option>Nairobi</option>
+                    <option>Nakuru</option>
+                    <option>Mombasa</option>
+                    <option>Kisumu</option>
+                    <option>Siaya</option>
+                    <option>Homabay</option>
+                    <option>Eldoret</option>
+                    <option>Nairobi</option>
+                    <option>Nakuru</option>
+                    <option>Mombasa</option>
+                    <option>Kisumu</option>
+                    <option>Siaya</option>
+                    <option>Homabay</option>
+                    <option>Eldoret</option>
+                    <option>Nairobi</option>
+                    <option>Nakuru</option>
+                    <option>Mombasa</option>
+                    <option>Kisumu</option>
+                    <option>Siaya</option>
+                    <option>Homabay</option>
+                    <option>Eldoret</option>
+                    <option>Nairobi</option>
+                    <option>Nakuru</option>
+                    <option>Mombasa</option>
+                    <option>Kisumu</option>
+                    <option>Siaya</option>
+                    <option>Homabay</option>
+                    <option>Eldoret</option>
+                </select>
+                <select name="experience" class="custom-select" id ="select23">
+                    <option selected disable=true >--Choose Your Experience--</option>
+                    <option>Internship</option>
+                    <option>Junior</option>
+                    <option>Intermediate</option>
+                    <option>Senior</option>
+                </select>
+                <input type="text" value='Job Title'name='title' class="form-control" id ="select23" >
+                <!--div-->
+                    <!--p style="position:relative;text-align:center;top:15px;"-->
+                        <button class="btn" id="search23" type="submit"value="search" style="margin:20px;" >
+                            Search
+                        </button>
+                    <!--/p-->
+                <!--/div-->           
+            </form>
+            </div>
+           </div>
+        </div>
+        </div>
+        {% endblock content %}
+        <hr>
+        <div id="job" style="width:100%;">
+            <h4 style="text-align:center;
+                        padding:15px;background-color:#D65076;
+                        color:black;font-weight:500;">Top Jobs</h4>
+        </div>
+        <!------------------------------------------------->
+       <div class="container">
+          <div class="card-columns" >
+            {% for Job in Job_all %}
+            <div class="card bg-info">
+              <div class="card-body text-center" >
+                <header><h2>{{Job.title}}</h2></header> 
+                <h4>Summary</h4> 
+                <p class="card-text">
+                  {{Job.summary}}
+                </p>
+                <footer>
+                  <p>Experience:{{Job.experience}}</p>
+                  <p>Salary:Ksh:{{Job.salary}}</p>
+                  <p><a href = "#">Read More</a></p>
+                </footer>
+              </div>
+            </div>
+            {% endfor %}
+              
+              <!--div class="card bg-warning">
+                <div class="card-body text-center">
+                  <header>{{Job.title}}</header> 
+                  <h2>Summary</h2> 
+                  <p class="card-text">
+                    {{Job.description}}
+                   
+                  </p>
+                  <footer>
+                    Experience:{{Job.experience}}
+                    Salary:Ksh:{{Job.salary}}
+                  </footer>
+                </div>
+              </div>
+              </div>
+              <div class="card bg-success">
+                <div class="card-body text-center">
+                  <header>{{Job.title}}</header> 
+                  <h2>Summary</h2> 
+                  <p class="card-text">
+                    {{Job.description}}
+                   
+                  </p>
+                  <footer>
+                    Experience:{{Job.experience}}
+                    Salary:Ksh:{{Job.salary}}
+                  </footer>
+                </div>
+              </div>
+              </div>
+              <div class="card bg-danger">
+                <div class="card-body text-center">
+                  <header>{{Job.title}}</header> 
+                  <h2>Summary</h2> 
+                  <p class="card-text">
+                    {{Job.description}}
+                   
+                  </p>
+                  <footer>
+                    Experience:{{Job.experience}}
+                    Salary:Ksh:{{Job.salary}}
+                  </footer>
+                </div>
+              </div>
+              </div>
+               
+              <div class="card bg-light">
+                <div class="card-body text-center">
+                  <h2>Description123</h2> 
+                  <p class="card-text">Some text inside the fifth card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                  </p>
+                  <footer>Salary:Ksh:100000</footer>
+                </div>
+              </div>
+              <div class="card bg-info">
+                <div class="card-body text-center">
+                  <h2>Description</h2> 
+                  <p class="card-text">Some text inside the sixth card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                    Some text inside the first card
+                  </p>
+                  <footer>Salary:Ksh:100000</footer>
+                </div>
+              </div-->
+            </div>
+          </div>
+          
 
-
-
-            {% for jobObj in Jobs %}
-            <div style="margin-left:60px;">
+        <!------------------------------------------------------------------>
+        <!--div class="w3-card" style="margin-left:60px;">
+           
                 
                 <div class="w3-card-8 w3-margin" style="width:80%;float:unset;">
-                        <header class="w3-container w3-blue">
-                            <h6>{{Jobs.title}}</h6>
-                        </header>
-                        <div class="w3-container">
-                            <p>
-                                {{Jobs.description}}
-                            </p>
-                            <p>
-                                <h3>{{Jobs.location}}</h3>
-                            </p>
-                            <p>
-                                <button class="w3-btn "style="border-radius:50%;float:right;background-color:#034F84;">
-                                    +
-                                </button>
-                            </p>
-                        </div>
-                        <footer class="w3-container w3-blue">
-                            <h3>Salary:{{Jobs.salary}}</h3>
-                        </footer>
-               
-                </div>
-                {% endfor %}
-                <!--section2-->
-                <!--div class="w3-card-8 w3-margin" style="width:80%;float:unset;">
-                        <header class="w3-container w3-blue">
-                            <h6>Head Of Finance</h6>
-                        </header>
-                        <div class="w3-container">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
-                            <p>
-                                <a href=""><button class="w3-btn "style="border-radius:50%;float:right;background-color:#034F84;">
-                                    +
-                                </button></a>
-                            </p>
-                        </div>
-                        <footer class="w3-container w3-blue">
-                            <h3>Salary:ksh30,000</h3>
-                        </footer>
-                </div-->
-        <!--Section3-->  
-        <!--div class="w3-card-8 w3-margin" style="width:80%;float:unset;">
-                <header class="w3-container w3-blue">
-                    <h6>Head Of Finance</h6>
-                </header>
-                <div class="w3-container">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                    <p>
-                        <button class="w3-btn " style="border-radius:50%;float:right;background-color:#034F84;">
-                            +
-                        </button>
-                    </p>
-                </div>
-                <footer class="w3-container w3-blue">
-                    <h3>Salary:ksh30,000</h3>
-                </footer>
-        </div>
-    </div-->
-        <!--section4-->
-        
-    
-<!-----------------------------Login-------------------------------------------------->
-
-<!-------------------------------------------------------------------------------->
-
-<!--Register---------------------------------------->
-<!--div id="id02" class="w3-modal">
-        <span onclick="getElementById('id02').style.display='none'" class="w3-closebtn w3-hover-red w3-container w3-padding-16 w3-display-topright">×</span>"
-        <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:300px">
-      
-                <div class="w3-center"><br>
-                  <img src="img_avatar4.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
-                </div>
-                <div class="w3-container">
-                        <div class="w3-section">
-                          <label><b>Username</b></label>
-                          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username">
-                          <label><b>Email</b></label>
-                          <input class="w3-input w3-border" type="text" placeholder="Enter Email">
-                          <label><b>Password</b></label>
-                          <input class="w3-input w3-border" type="text" placeholder="Enter Password">
-                          <label><b>Confirm Password</b></label>
-                          <input class="w3-input w3-border" type="text" placeholder="Confirm Password">
-                  
-                          <button class="w3-btn w3-btn-block w3-green">Register</button>
-                          <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
-                        </div>
-                      </div>
-                  
-                      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-                        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-btn w3-red">Cancel</button>
-                        <span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
-                      </div>
-                  
+                    <header class="w3-container w3-blue">
+                            <h6>{{Job.title}}</h6>
+                            <h6>{{Job.experience}}</h6>
+                    </header>
+                    <div class="w3-container">
+                            <p>{{Job.description|safe}}</p>
+                            <p><h3>{{job.location}}</h3></p>
                     </div>
-                  </div>        
-    </div-->
-<!-------------------------------------------------->
-<hr>
-<!--------------------------------------------------------------------------------->    
-    <div id="client1"style="padding:10px;background-color:#45B8AC;color:black;">
-        <h5 style="text-align:center;font-weight:bold;font-size:25px;top:5px;">Top Employers</h5>
+                    <footer class="w3-container w3-blue">
+                        <h3>Location: {{Job.location}}</h3>
+                        <h3>Salary:Ksh {{Job.salary}}</h3>
+                        <p><button class="w3-btn "style="border-radius:50%;float:right;background-color:#034F84;">
+                            <a href =  > Read More </a>
+                            </button>
+                        </p>
+                    </footer>
+                </div>
+            </div>    
     </div>
-    <div id = clients>    
-        <img src="{% static 'img/orient 13.png' %}" style="border-radius:50%;height:150px;width:150px;margin:7px;">
-        <img src="{% static 'img/naivas 5.png'%}" style="border-radius:50%;height:150px;width:150px;margin:7px;">
-        <img src="{% static 'img/meru 10.png'%}" style="border-radius:50%;height:150px;width:150px;margin:7px;">
-        <img src="{% static 'img/kcb 4.jfif'%}" style="border-radius:50%;height:150px;width:150px;margin:7px;">
-        <img src="{% static 'img/red 6.png'%}" style="border-radius:50%;height:150px;width:150px;margin:7px;">
-        <img src="{%static 'img/mpesa 7.png'%}" style="border-radius:50%;height:150px;width:150px;margin:7px;">
-        <img src="{% static 'img/kfs 12.png'%}" style="border-radius:50%;height:150px;width:150px;margin:7px;">
+            </div-->    
         
-
-    </div>
-<!--------------------------------------------------------------------------------->    
-    <div id="link" style="border:;">
-        <h5 style="text-align:center;margin-top:0;color:black;font-weight:500;">Contacts</h5>
-    </div>
-    <div id="contact"class="">
-        <i></i>
-           
-    </div>
-          
+        <hr>
         
-</div>            
-        
+        <div id="client"style="padding:10px;background-color:#45B8AC;color:black;">
+            <h5 style="text-align:center;font-weight:bold;font-size:25px;top:5px;">Top Employers</h5>
+       </div>
+      <div style="background-color: #45B8AC;">
+        <img src="{% static 'img/orient 13.png' %}" style="border-radius:50%;height:100px;width:100px;margin:7px;">
+        <img src="{% static 'img/naivas 5.png'%}" style="border-radius:50%;height:100px;width:100px;margin:7px;">
+        <img src="{% static 'img/meru 10.png'%}" style="border-radius:50%;height:100px;width:100px;margin:7px;">
+        <img src="{% static 'img/kcb 4.jfif'%}" style="border-radius:50%;height:100px;width:100px;margin:7px;">
+        <img src="{% static 'img/red 6.png'%}" style="border-radius:50%;height:100px;width:100px;margin:7px;">
+        <img src="{%static 'img/mpesa 7.png'%}" style="border-radius:50%;height:100px;width:100px;margin:7px;">
+        <img src="{% static 'img/kfs 12.png'%}" style="border-radius:50%;height:100px;width:100px;margin:7px;">
+        <img src="{%static 'img/mpesa 7.png'%}" style="border-radius:50%;height:100px;width:100px;margin:7px;">
+        <img src="{% static 'img/kfs 12.png'%}" style="border-radius:50%;height:100px;width:100px;margin:7px;">
 
-    
-</body> 
-    <div id="footer">
-        <p>Copy Right&copy  |  2019-2021 | LINKUS HR AGENCY  |   API |<a href="#">About Us</a>|<a href="#">Blog</a> |<a href="#"> Term of Use</a> |<a href="#"> Privacy and Policy</a> |<a href="#"> Support </a></p>
-        
-
-    </div>
-    
-
-
+      </div>
+      <footer class="bg-dark text-center text-white">
+        <div class="container">
+          <section class="mb-2">
+            <!--div style="text-align:left;top:50px;">
+            <h5>Address</h5>
+            <ul>
+              <li>Luthuli Avenue ,Jamii business Center</li>
+            </ul>
+            </div-->
+          </section>
+        </div>
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+               ><i class="fab fa-facebook-f"></i
+              ></a>
+  
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+               ><i class="fab fa-twitter"></i
+              ></a>
+  
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+               ><i class="fab fa-google"></i
+              ></a>
+  
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+               ><i class="fab fa-instagram"></i
+              ></a>
+  
+            <!-- Linkedin -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+               ><i class="fab fa-linkedin-in"></i
+              ></a>
+  
+            <!-- Github -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+               ><i class="fab fa-github"></i
+              ></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2020 Copyright:
+          <a class="text-white" href="https://linkedus.com/">LinkedUS.com</a> |
+          <a class="text-white" href="https://linkedus.com/">API</a> |
+          <a class="text-white" href="https://linkedus.com/">About Us</a> |
+          <a class="text-white" href="https://linkedus.com/">Term&Condition </a> |
+          <a class="text-white" href="https://linkedus.com/">Blog</a> |
+          <a class="text-white" href="https://linkedus.com/">Data Protection</a>
+        </div>
+    </footer>
+    </body> 
 </html>
     
-        <!--ul class="w3-navbar w3-blue" style="width:100%;padding:10px;">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Sign Up</a></li>
-                <li><a href="#">Login</a></li>
-        </ul>
-        <div class="w3-display-container" style="height:50%;">
-            <!--img src="bj.jpg">
-        </div>
-        <div class="w3-row-padding" style="background-color:darkgoldenrod;min-height:150px; margin-top:20px;">
-            <div class="w3-container w3-third ">
-                <input type="text" name = "Industry"value="Industry">
-                
-            </div>
-            <div class="w3-container w3-third">
-                <input type="text" name="keyword"value="">
-            </div>
-            <div class="w3-container w3-third">
-                <input type="text" name="Experience" value="">
-            </div> 
-            <button type="submit">Search</button> 
-        </div> 
-        <div class="w3-row">
-                
-                
-        </div>
-          
-
-
-<!--footer class="w3-container w3-teal">
- <p> My footer content will go here</p>
+   

@@ -1,0 +1,15 @@
+{% extends 'Job/index.html'%}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div>
+        <h4>Delete Job</h4>
+        <p> Are You sure You want to delete Job {{object.title}} </p>
+       <button type="submit">Yes,Delete</button> 
+       <button type="submit"><a href="{% url 'Job:Job-detail'object.id %}"> No</a></button>
+
+
+    </div>
+</form>
+
+{% endblock content%}

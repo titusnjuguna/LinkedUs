@@ -1,0 +1,29 @@
+<html>
+    <head> 
+        {% load crispy_forms_tags %}
+    </head>
+    <body> 
+        <div> 
+            <h1>{{object.title}} </h1>
+            <p>{{object.description| safe}}</p>
+            <p>{{object.experience}}</p>  
+            <p>{{object.salary}}</p>
+            <p>{{object.location}}</p>
+            <p>{{object.author}}</p>
+        </div>
+        <div> 
+            {% if object.author == user %}
+            <button><a href="{% url 'Job:Job-update' object.id %]">Update</a></button>
+            <button><a href="#">Delete</a></button>
+            {% endif %}
+
+
+        </div>
+
+
+
+    </body>
+
+   
+    
+</html>
