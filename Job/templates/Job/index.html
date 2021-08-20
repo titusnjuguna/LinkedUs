@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+<head> 
+    <head> 
+        {% load crispy_forms_tags %}
+        {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link  href="{% static 'css/w3.css' %}" rel="stylesheet">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+        <link href="bootstrap-icons-1.5.0/" >
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <title>Wira App</title>
+    </head>
+    <body >
+       <div id=search>
+            <nav class="w3-navbar navbar-inverse">
+                <h6 style="font-weight:bolder;color:white;font-size:2em;position:relative;float:left;top:10px;">Linked<span style="padding:0px 0 0px 0;background-color: #000;border-radius:7px">US</span></h6>
+                <ul class="nav navbar-nav" style="display:inline; left:30px;float:right;text-align:center;color:white;">
+                    {% if user.is_authenticated %}
+                    <!--li><a href="{% url 'Job-create' %}">Post Job</a></li-->
+                    <li><a href="{% url 'Logout'%}"> Logout </a></li>
+                    <li><a href="{% url 'Profile_Page' %}"><img src="{{user.profile.image.url}}"style="border-radius:50%;height: 50px;width: 50px;margin-right: 20px;margin-bottom: 12px;"></a></li>
+                    {% else %}
+                    <li><a href="{% url 'Register' %}" onclick="document.getElementById('id02' ).style.display='block';">Sign Up</a></li>
+                    <li><a href="{% url 'Login'%}" onclick="document.getElementById('id01' ).style.display='block'">Login</a></li>
+                    {% endif %}    
+                </ul>
+            </nav>
+        </div>
+        {% block content %}
+        <div class="jumbotron">
+        <div class="container" >
+          
+          <div class="card">  
+            <div class="card-body bg-light">        
+
+            <form class="form-inline center"  method="GET" action="{% url 'search-result' %}">
+                {% csrf_token %}
+                <select name="location" id ="select23" class="custom-select">
+                    <option selected disable=true >--Select County--</option>
+                    <option>Nairobi</option>
+                    <option>Nakuru</option>
+                    <option>Mombasa</option>
+                    <option>Kisumu</option>
+                    <option>Siaya</option>
+                    <option>Homabay</option>
+                    <option>Eldoret</option>
+                    <option>Nairobi</option>
+                    <option>Nakuru</option>
+                    <option>Mombasa</option>
+                    <option>Kisumu</option>
+                    <option>Siaya</option>
+                    <option>Homabay</option>
+                    <option>Eldoret</option>
+                    <option>Nairobi</option>
+                    <option>Nakuru</option>
+                    <option>Mombasa</option>
+                    <option>Kisumu</option>
+                    <option>Siaya</option>
+                    <option>Homabay</option>
+                    <option>Eldoret</option>
+                    <option>Nairobi</option>
+                    <option>Nakuru</option>
+                    <option>Mombasa</option>
+                    <option>Kisumu</option>
+                    <option>Siaya</option>
+                    <option>Homabay</option>
+                    <option>Eldoret</option>
+                </select>
+                <select name="experience" class="custom-select" id ="select23">
+                    <option selected disable=true >--Choose Your Experience--</option>
+                    <option>Internship</option>
+                    <option>Junior</option>
+                    <option>Intermediate</option>
+                    <option>Senior</option>
+                </select>
+                <input type="text" value='Job Title'name='title' class="form-control" id ="select23" >
+                <!--div-->
+                    <!--p style="position:relative;text-align:center;top:15px;"-->
+                        <button class="btn" id="search23" type="submit"value="search" style="margin:20px;" >
+                            Search
+                        </button>
+                    <!--/p-->
+                <!--/div-->           
+            </form>
+            </div>
+           </div>
+        </div>
+        </div>
+        {% endblock content %}
+        <hr>
+        <div id="job" style="width:100%;">
+            <h4 style="text-align:center;
+                        padding:15px;background-color:#D65076;
+                        color:black;font-weight:500;">Top Jobs</h4>
+        </div>
+        <!------------------------------------------------->
+       <div class="container">
+          <div class="card-columns" >
+            {% for job in Job_all %}
+            <div class="card bg-info" style="border-radius:7px;">
+              <div class="card-body text-left" >
+                <header ><h2>{{job.title}}</h2></header> 
+                <h4>Summary</h4> 
+                <p class="card-text">
+                  {{job.summary|safe}}
+                </p>
+                <footer>
+                  <p>Experience:{{job.experience}}</p>
+                  <p>Salary:Ksh:{{job.salary}}</p>
+                  <p>
+                    <button style="border-radius:8px;padding:3px 3px 3px 3px;color:white;border:none;background-color:#034F84;">
+                      <a href="{% url 'Job-detail' job.id  %}">Read More</a>
+                    </button>
+                    <a class="btn btn-secondary" href = "{%url 'apply' job.id%}">APPLY NOW</a>
+                  </p>
+                </footer>
+              </div>
+            </div>
+            {% endfor %}
+              
+          </div>
+          </div>
+          
+
+        <hr>
+        
+        <div id="client"style="padding:10px;background-color:#45B8AC;color:black;">
+            <h5 style="text-align:center;font-weight:bold;font-size:25px;top:5px;">Top Clients</h5>
+       </div>
+      <div style="background-color: #45B8AC;">
+        <img src="{% static 'img/orient 13.png' %}" style="border-radius:50%;height:90px;width:90px;margin:7px;">
+        <img src="{% static 'img/naivas 5.png'%}" style="border-radius:50%;height:90px;width:90px;margin:7px;">
+        <img src="{% static 'img/meru 10.png'%}" style="border-radius:50%;height:90px;width:90px;margin:7px;">
+        <img src="{% static 'img/kcb 4.jfif'%}" style="border-radius:50%;height:90px;width:90px;margin:7px;">
+        <img src="{% static 'img/red 6.png'%}" style="border-radius:50%;height:90px;width:90px;margin:7px;">
+        <img src="{%static 'img/mpesa 7.png'%}" style="border-radius:50%;height:90px;width:90px;margin:7px;">
+        <img src="{% static 'img/kfs 12.png'%}" style="border-radius:50%;height:90px;width:90px;margin:7px;">
+        <img src="{%static 'img/mpesa 7.png'%}" style="border-radius:50%;height:90px;width:90px;margin:7px;">
+        <img src="{% static 'img/kfs 12.png'%}" style="border-radius:50%;height:90px;width:90px;margin:7px;">
+
+      </div>
+      <footer class="bg-dark text-center text-white">
+        <div class="container">
+          <section class="mb-2">
+            <!--div style="text-align:left;top:50px;">
+            <h5>Address</h5>
+            <ul>
+              <li>Luthuli Avenue ,Jamii business Center</li>
+            </ul>
+            </div-->
+          </section>
+        </div>
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <h5>Connect With Us:</h5>
+          <!-- Section: Social media -->
+          <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+               ><i class="fab fa-facebook-f"></i
+              ></a>
+  
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+               ><i class="fab fa-twitter"></i
+              ></a>
+  
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+               ><i class="fab fa-google"></i
+              ></a>
+  
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+               ><i class="fab fa-instagram"></i
+              ></a>
+  
+            <!-- Linkedin -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+               ><i class="fab fa-linkedin-in"></i
+              ></a>
+  
+            <!-- Github -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+               ><i class="fab fa-github"></i
+              ></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2020 Copyright:
+          <a class="text-white" href="https://linkedus.com/">LinkedUS.com</a> |
+          <a class="text-white" href="https://linkedus.com/">API</a> |
+          <a class="text-white" href="https://linkedus.com/">About Us</a> |
+          <a class="text-white" href="https://linkedus.com/">Term&Condition </a> |
+          <a class="text-white" href="https://linkedus.com/">Blog</a> |
+          <a class="text-white" href="https://linkedus.com/">Data Protection</a>
+        </div>
+    </footer>
+    </body> 
+</html>
+    
+   

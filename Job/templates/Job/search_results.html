@@ -1,0 +1,18 @@
+<html>
+<h1>Search Results</h1>
+<body>
+<div>
+    {%for Job in Jobs %}
+
+      <h4>{{Job.title|safe}}</h4>
+      <p>{{Job.description}}</p>
+      <p>{{Job.salary}}</p>
+      <p>{{Job.location}}</p>
+    
+   
+    {% endfor %}
+
+    
+</div>
+</body>
+</html>

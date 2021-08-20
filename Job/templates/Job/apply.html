@@ -1,0 +1,14 @@
+{% extends "../Job/base.html"%}
+{% load crispy_forms_tags %}
+{% block content%}
+
+<div class="box jumbotron container">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" class="btn btn-success btn-sm" value="submit">
+    </form>
+</div>
+
+{% endblock content %}
+

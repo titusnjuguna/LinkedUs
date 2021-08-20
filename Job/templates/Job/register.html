@@ -1,0 +1,17 @@
+{% extends "../Job/base.html"%}
+{% load crispy_forms_tags %}
+{% block content%}
+<div class="container ">
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <div>
+                <button type="submit">Sign up</button>
+        </div>
+    </form>
+    <small>
+        Already Have an Account ? <a href = "{% url 'Login' %}">Login</a>
+    </small>
+    
+</div>
+{% endblock content %}
