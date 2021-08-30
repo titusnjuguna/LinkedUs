@@ -20,10 +20,20 @@ from django.contrib.auth import views as auth_views
 from django.urls.resolvers import URLPattern
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+from Job import views
+
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'jobs', views.CompanyViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('Job.urls'))
+    path('',include('Users.urls')),
+    path('',include('Job.urls')) 
+    #path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

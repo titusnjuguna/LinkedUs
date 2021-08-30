@@ -25,25 +25,5 @@ class ApplyForm(forms.ModelForm):
     class Meta:
         model = Candidates  
         fields = "__all__"
-"""class Add_company(forms.Model):
-    email = forms.EmailField()
-    class Meta:
-        model = Company
-        fields = ['name','email'] """       
+  
 
-class CompRegisterForm(UserCreationForm):
-    email= forms.EmailField()
-    class Meta:
-        model = User
-        fields = ['username','email','password1','password2']
-
-class Comp_UpdateForm(UserCreationForm):
-    email = forms.EmailField()
-    class Meta:
-        model = User
-        fields = ['username','email']     
-
-"""class ProfilePicForm(forms.ModelForm):
-    class Meta:
-        model = Company
-        fields = ['image']   """           

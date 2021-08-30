@@ -26,7 +26,7 @@
                     <li><a href="{% url 'Logout'%}"> Logout </a></li>
                     <li><a href="{% url 'Profile_Page' %}"><img src="{{user.profile.image.url}}"style="border-radius:50%;height: 50px;width: 50px;margin-right: 20px;margin-bottom: 12px;"></a></li>
                     {% else %}
-                    <li><a href="{% url 'Register' %}" onclick="document.getElementById('id02' ).style.display='block';">Sign Up</a></li>
+                    <li><a href="{% url 'Register' %}" onclick="document.getElementById('id02' ).style.display='block'">Sign Up</a></li>
                     <li><a href="{% url 'Login'%}" onclick="document.getElementById('id01' ).style.display='block'">Login</a></li>
                     {% endif %}    
                 </ul>

@@ -3,10 +3,10 @@ body,html{margin:0;padding:0;height:100%;font-family: Arial, Helvetica, sans-ser
           font-weight:400;line-height:1.9em;color:#666;}
 #header{background-color:black;color:white;text-align:center;padding:15px;width:100%;}
 .form-inline{display:flex;flex-flow:row wrap;align-items:center;}
-#search{text-align:center;margin-bottom:5px;text-align:center;line-height:20px;background-color:#034F84;
+#search{text-align:center;margin-bottom:25px;text-align:center;line-height:20px;background-color:#034F84;
         list-style-type:none;}
 ul{margin-bottom:4px;}
-ul li {display:inline;list-style-type: none;margin:auto;text-decoration: none;color:white;margin-top:15px;}
+ul li {display:inline;list-style-type: none;margin:auto;text-decoration: none;color:white;margin-top:5px;}
 li a{text-align:center;color:white;}
 ul li a.active{background:none;}
 ul li a{text-decoration: none;position:relative;left:10px;top:15px;text-align:center;margin-right: 5px;}   

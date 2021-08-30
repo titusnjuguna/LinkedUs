@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="container">
-    <form action="" method="POST" style='padding: 10px 20px;'>
+    <form  method="POST" enctype="multipart/form-data" style='padding: 10px 20px;'>
         {% csrf_token %}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">Create Post</legend> 
