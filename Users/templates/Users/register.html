@@ -3,15 +3,20 @@
 {% block content%}
 <div class="container ">
     <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form.as_p}}
-        <div>
-                <button type="submit">Sign up</button>
+        {%csrf_token%}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Register</legend>
+            {{form.as_p}}
+        </fieldset>    
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Sign up</button>
         </div>
     </form>
-    <small>
-        Already Have an Account ? <a href = "{% url 'Login' %}">Login</a>
-    </small>
+    <div class ="border-top pt-3">
+        <small class="text-muted">
+            Already Have an Account ? <a href = "{% url 'Login' %}">Login</a>
+        </small>
+    </div>    
     
 </div>
 {% endblock content %}

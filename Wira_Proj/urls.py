@@ -1,39 +1,28 @@
-"""Wira_Proj URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from typing import Pattern
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from django.contrib.auth import views as auth_views
-from django.urls.resolvers import URLPattern
 from django.conf import settings
 from django.conf.urls.static import static
-from rest_framework import routers
-from Job import views
-
-
-router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'jobs', views.CompanyViewSet)
+from Users import views as user_views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('Users.urls')),
-    path('',include('Job.urls')) 
-    #path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('', include('Job.urls')),
+    path('register/', user_views.register, name='Register'),
+    path('login/', auth_views.LoginView.as_view(template_name='Users/login.html'), name='Login'),
+    path('Logout/', auth_views.LogoutView.as_view(template_name='Users/logout.html'), name='Logout'),
+    path('profile/', user_views.profile, name='Profile_Page'),
+    path('Password-reset/', auth_views.PasswordResetView.as_view(
+        template_name='Users/password_reset.html'), name='password_reset'),
+    path('Password-reset/done/', auth_views.PasswordResetDoneView.as_view(
+        template_name='Users/password_reset_done.html'), name='password_reset_done'),
+    path('Password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(
+        template_name='Users/password_reset_confirm.html'), name='password_reset_confirm'),
 ]
+
+
 if settings.DEBUG:
-    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

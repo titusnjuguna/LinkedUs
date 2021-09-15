@@ -2,22 +2,21 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head> 
-         
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link  href="{% static 'css/w3.css' %}" rel="stylesheet">
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-        <link href="bootstrap-icons-1.5.0/" >
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    </head>
-    <body>
-      <div id=search>
-        <nav class="w3-navbar navbar-inverse">
-            <h6 style="font-weight:bolder;color:white;font-size:2em;position:relative;float:left;top:10px;">Linked<span style="padding:0px 0 0px 0;background-color: #000;border-radius:7px">US</span></h6>
+  <head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width", initial-scale=1, shrink-to-fit=no>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link  href="{% static 'css/w3.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="bootstrap-icons-1.5.0/" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div id="search">
+      <nav class="w3-navbar navbar-inverse">
+        <h6 style="font-weight:bolder;color:white;font-size:2em;position:relative;float:left;top:10px;">Linked<span style="padding:0px 0 0px 0;background-color: #000;border-radius:7px">US</span></h6>
             <ul class="nav navbar-nav" style="display:inline; left:30px;float:right;text-align:center;color:white;">
                 {% if user.is_authenticated %}
                 <!--li><a href="{% url 'Job-create' %}">Post Job</a></li-->
@@ -34,65 +33,45 @@
 
         {% endblock content%}
 
-        <div class="container">
-
-        </div>
-
-
-
-        <footer class="bg-dark text-center text-white">
-            <div class="container">
-              <section class="mb-2">
-               
-              </section>
-            </div>
-            <!-- Grid container -->
-            <div class="container p-4 pb-0">
-              <h5>Connect With Us:</h5>
-              <!-- Section: Social media -->
-              <section class="mb-4">
-                <!-- Facebook -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                   ><i class="fab fa-facebook-f"></i
-                  ></a>
-      
-                <!-- Twitter -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                   ><i class="fab fa-twitter"></i
-                  ></a>
-      
-                <!-- Google -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                   ><i class="fab fa-google"></i
-                  ></a>
-      
-                <!-- Instagram -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        <!--div class="container"-->
+<footer class="footer bg-dark text-center text-white" style="position: fixed;bottom:0;width:100%;">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <h5>Connect With Us:</h5>
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
                    ><i class="fab fa-instagram"></i
                   ></a>
-      
-                <!-- Linkedin -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
                    ><i class="fab fa-linkedin-in"></i
                   ></a>
-      
-                <!-- Github -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
                    ><i class="fab fa-github"></i
                   ></a>
-              </section>
-              <!-- Section: Social media -->
-            </div>
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-              © 2020 Copyright:
-              <a class="text-white" href="https://linkedus.com/">LinkedUS.com</a> |
-              <a class="text-white" href="https://linkedus.com/">API</a> |
-              <a class="text-white" href="https://linkedus.com/">About Us</a> |
-              <a class="text-white" href="https://linkedus.com/">Term&Condition </a> |
-              <a class="text-white" href="https://linkedus.com/">Blog</a> |
-              <a class="text-white" href="https://linkedus.com/">Data Protection</a>
-            </div>
-        </footer>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-white" href="https://linkedus.com/">LinkedUS.com</a> |
+    <a class="text-white" href="#">API</a> |
+    <a class="text-white" href="https://linkedus.com/">About Us</a> |
+    <a class="text-white" href="https://linkedus.com/">Term&Condition </a> |
+    <a class="text-white" href="https://linkedus.com/">Blog</a> |
+    <a class="text-white" href="https://linkedus.com/">Data Protection</a>
+  </div>
+</footer>
+<!--/div--> 
 
-    </body> 
+  </body> 
 </html>       

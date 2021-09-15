@@ -1,11 +1,13 @@
 {% extends "../Job/base.html"%}
 {% load crispy_forms_tags %}
 {% block content%}
-
 {% load bootstrap %}
 <div class="container">
-  <form method ="POST", enctype="multipart/form-data">
-    {% csrf_token %}
+  <div class="card" style="width:25em;height:28em;position: absolute;top:40%;left:50%;transform: translate(-40%,-50%);">
+    <!--div class="card-title">Welcome Back</div-->
+    <div class="card-body">
+      <form method ="POST", enctype="multipart/form-data">
+    {%csrf_token%}
     <fieldset>
       <legend class="border-bottom mb-4">Login</legend> 
       {{form|bootstrap}}
@@ -22,6 +24,8 @@
       Forgot Password ? <a class = 'ml-2' href="{% url 'password_reset'%}">Reset Password</a>
     </small>
   
+   </div>
+  </div>
   </div>
 </div>
 {% endblock content %}

@@ -108,7 +108,7 @@
                 <header ><h2>{{job.title}}</h2></header> 
                 <h4>Summary</h4> 
                 <p class="card-text">
-                  {{job.summary|safe}}
+                  {{job.description|safe|truncatewords:"150"}}
                 </p>
                 <footer>
                   <p>Experience:{{job.experience}}</p>
