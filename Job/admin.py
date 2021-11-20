@@ -1,6 +1,13 @@
 from django.contrib import admin
-from .models import *
+from .models import Jobs,Candidates
 
-# Register your models here.
-admin.site.register(Jobs)
-admin.site.register(Candidates)
+
+@admin.register(Jobs)
+class JobAdmin(admin.ModelAdmin):
+    list_display = ('title', 'experience', 'salary', 'location','published')
+    list_filter = ('salary', 'location', 'published')
+    search_field = ('title', 'experience')
+    ordering = ('published',)
+
+
+

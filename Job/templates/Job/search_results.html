@@ -5,7 +5,7 @@
     {%for Job in Jobs %}
 
       <h4>{{Job.title|safe}}</h4>
-      <p>{{Job.description}}</p>
+      <p>{{Job.description|truncatewords:2}}</p>
       <p>{{Job.salary}}</p>
       <p>{{Job.location}}</p>
     

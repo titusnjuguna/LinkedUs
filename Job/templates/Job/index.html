@@ -95,11 +95,9 @@
         {% endblock content %}
         <hr>
         <div id="job" style="width:100%;">
-            <h4 style="text-align:center;
-                        padding:15px;background-color:#D65076;
-                        color:black;font-weight:500;">Top Jobs</h4>
+       
         </div>
-        <!------------------------------------------------->
+       
        <div class="container">
           <div class="card-columns" >
             {% for job in Job_all %}
@@ -108,7 +106,7 @@
                 <header ><h2>{{job.title}}</h2></header> 
                 <h4>Summary</h4> 
                 <p class="card-text">
-                  {{job.description|safe|truncatewords:"150"}}
+                  {{job.description|safe|truncatewords:50}}
                 </p>
                 <footer>
                   <p>Experience:{{job.experience}}</p>
