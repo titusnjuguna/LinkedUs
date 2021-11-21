@@ -16,6 +16,10 @@ class PublishedManager(models.Manager):
 
 # Create your models here.
 class Jobs(models.Model):
+    STATUS_CHOICES = (
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+    )
     published = PublishedManager()
     title = models.CharField(max_length=100, null=True, blank=True)
     experience = models.CharField(max_length=30, null=True, blank=True)
@@ -23,11 +27,12 @@ class Jobs(models.Model):
     salary = models.DecimalField(
         max_digits=10, null=True, blank=True, decimal_places=0)
     location = models.CharField(max_length=30, null=True, blank=True)
-    created = models.DateTimeField(auto_now_add=True)
-    published = models.DateTimeField(default=timezone.now)
+    date_posted = models.DateTimeField(auto_now_add=True)
+    publish = models.DateTimeField(default=timezone.now)
     updated = models.DateTimeField(auto_now = True)
+    status =  models.CharField(max_length=15,default='draft',choices= STATUS_CHOICES)
 
-    date_posted = models.DateTimeField(default=timezone.now)
+    
 
     def __str__(self):
         return str(self.title)
