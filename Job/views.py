@@ -9,23 +9,21 @@ from django.contrib import messages
 from django.db.models import Q
 from .serializers import *
 from .forms import *
-from .models import *
+from .models import Jobs 
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import login, logout, authenticate
 
 
 def home(request):
-    context = {
-        'Job_all': Jobs.objects.all()
-    }
-    return render(request, 'Job/index.html', context)
-
+    job_list = Jobs.published.all()
+              
+    return render(request, 'Job/index.html', {'job_list': job_list})
 
 def ApplyPage(request):
     form = ApplyForm()
     if request.method == 'POST':
-        form = ApplyForm(request.POST, request.FILES)
+        form = ApplyForm(request.FILES,data=request.POST)
         if form.is_valid():
             form.save()
             return redirect('Job-home')
@@ -33,7 +31,39 @@ def ApplyPage(request):
     return render(request, 'Job/apply.html', context)
 
 
-class JobResultView(ListView):
+def job_detail(request, year, month, day, job):
+    job = get_object_or_404(Jobs, slug=job,
+                             status='published',
+                             publish__year=year,
+                             publish__month=month,
+                             publish__day=day)
+    App_form = ApplyForm()
+    if request.method == 'POST':
+        App_form = ApplyForm(request.FILES, data=request.POST)
+        if App_form.is_valid():
+            App_form.save()
+            return redirect('Job-home')
+    
+    return render(request,'Job/Job_detail.html',
+                  {'job': job, 'App_form': App_form})
+
+
+
+def search_view(request):
+    searchJob = SearchForm()
+    query = None
+    results = []
+    if 'query' in request.GET:
+        searchJob = SearchForm(request.GET)
+        if searchJob.is_valid():
+            query = searchJob.cleaned_data['query']
+            results = Jobs.published.annotate(
+                search=SearchVector('location', 'experience','title'),).filter(search=query)
+    return redirect(request, 'Job/search_results.html', {'query': query, 'results': results})
+    
+
+
+"""class JobResultView(ListView):
     model = Jobs
     template_name = 'Job/search_results.html'
 
@@ -43,8 +73,7 @@ class JobResultView(ListView):
         if q:
             object_list = Jobs.objects.filter(Q(location_icontains=query) & Q(
                 experience_icontains=query) & Q(title_icontains=query))
-            return object_list
-
+            return object_list"""
 
 class JobsListView(ListView):
     model = Jobs
@@ -53,30 +82,22 @@ class JobsListView(ListView):
     ordering_by = ['-date_posted']
     paginate_by = 6
 
-
 class UserJobsListView(ListView):
     model = Jobs
     template_name = 'Job/user_posts.html'
     context_object_name = 'Job_all'
-
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Jobs.objects.filter(author=user).order_by('-date_posted')
 
-
 class JobCreateView(LoginRequiredMixin, CreateView):
     model = Jobs
-    fields = ['title', 'summary', 'description',
+    fields = ['title', 'description',
               'location', 'experience', 'salary']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-
-
-class JobDetailView(DetailView):
-    model = Jobs
-
 
 class JobUpdateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Jobs
@@ -104,15 +125,12 @@ class JobDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
-
-# API
-class CompanyViewSet(viewsets.ModelViewSet):
+"""class JobsViewSet(viewsets.ModelViewSet):
     queryset = Jobs.objects.all()
     serializer_class = CompanySerializer
     permission_classes = [permissions.IsAuthenticated]
 
-
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]"""

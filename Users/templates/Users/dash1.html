@@ -1,0 +1,33 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" , initial-scale=1, shrink-to-fit=no>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="{% static 'css/w3.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="bootstrap-icons-1.5.0/">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="w3-navbar navbar-inverse">
+    <!--h6 style="font-weight:bolder;color:white;font-size:2em;position:relative;float:left;top:10px;">Linked<span style="padding:0px 0 0px 0;background-color: #000;border-radius:7px">US</span></h6-->
+    <ul class="nav navbar-nav" style="display:inline; left:30px;float:right;text-align:center;color:white;">
+        {% if user.is_authenticated %}
+
+        <li><a href="{% url 'Logout'%}"> Logout </a></li>
+        <li><a href="{% url 'Profile_Page' %}"><img src="{{user.profile.image.url}}"
+                    style="border-radius:50%;height: 50px;width: 50px;margin-right: 20px;margin-bottom: 12px;"></a></li>
+        {% else %}
+        <li><a href="{% url 'Register' %}" onclick="document.getElementById('id02' ).style.display='block';">Sign Up</a>
+        </li>
+        <li><a href="{% url 'Login'%}" onclick="document.getElementById('id01' ).style.display='block'">Login</a></li>
+        {% endif %}
+    </ul>
+</nav>
+</body>

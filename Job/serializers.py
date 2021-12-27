@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User,Group
 from django.db.models.base import Model
-from .models import  Jobs
+from .models import  Jobs as JobsModel
 from rest_framework import serializers
 
 
@@ -10,8 +10,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['username','groups','date_joined']
 
 
-class CompanySerializer(serializers.HyperlinkedModelSerializer):
+class JobSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model= Jobs
+        model= JobsModel
         fields = ['title','experience','location','salary']        
         

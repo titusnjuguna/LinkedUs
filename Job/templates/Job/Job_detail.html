@@ -1,0 +1,39 @@
+{% extends "../Job/base.html"%}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ job.title }}{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title">{{ job.title }}</h1>
+        <h3><b>Experience:</b>{{job.experience}}</h3>
+        <p class="date">
+            Published {{ job.publish }} by {{ job.author }}
+        </p>
+        <p class="card-text">
+            {{ job.description|linebreaks }}
+        </p>
+
+    </div>
+
+</div>
+<hr>
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">APPLY HERE </h3>
+        <form>
+            <p>{{App_form.as_p}}</p>
+            <input type="submit" value="Apply">
+        </form>
+    </div>
+
+
+</div>
+
+{% endblock content %}
+
+
+    
+
+   
+    

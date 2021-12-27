@@ -28,7 +28,8 @@ SECRET_KEY = 'django-insecure-cp#72-vp#1s0tswq(mmjf)$zhdwqhmc&jpa=v=-b7gc$k-s_r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '78cd-41-80-98-205.ngrok.io',
+                 '6552-41-80-98-205.ngrok.io']
 
 
 # Application definition
@@ -138,7 +139,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-LOGIN_REDIRECT_URL = 'Job-home'
+LOGIN_REDIRECT_URL = 'Job:Job-home'
 LOGIN_URL = 'Login'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

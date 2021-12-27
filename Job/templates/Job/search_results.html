@@ -1,18 +1,25 @@
-<html>
-<h1>Search Results</h1>
-<body>
-<div>
-    {%for Job in Jobs %}
-
-      <h4>{{Job.title|safe}}</h4>
-      <p>{{Job.description|truncatewords:2}}</p>
-      <p>{{Job.salary}}</p>
-      <p>{{Job.location}}</p>
-    
-   
-    {% endfor %}
-
-    
-</div>
-</body>
-</html>
+{% extends "../index.html"%}
+{% block title %}Search{% endblock %}
+{% block content %}
+{% if query %}
+<h1>Jobs containing "{{ query }}"</h1>
+<h3>
+  {% with results.count as total_results %}
+  Found {{ total_results }} result{{ total_results|pluralize }}
+  {% endwith %}
+</h3>
+{% for post in results %}
+<h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></ h4>
+  {{post.body}}
+  {% empty %}
+  <p>There are no results for your query.</p>
+  {% endfor %}
+  <p><a href="{% url " blog:post_search" %}">Search again</a></p>
+  {% else %}
+  <h1>Search for posts</h1>
+  <!--form method="get">
+    {{ form.as_p }}
+    <input type="submit" value="Search">
+  </form-->
+  {% endif %}
+  {% endblock %}

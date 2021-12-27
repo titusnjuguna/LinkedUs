@@ -5,6 +5,7 @@ from django.contrib import messages
 from .forms import *
 from .models import *
 from django.contrib.auth.decorators import login_required
+from Job.models import Candidates
 
 # Create your views here.
 
@@ -43,5 +44,10 @@ def profile(request):
         'u_form': u_form,
         'p_form': p_form
     }
-
     return render(request, 'Users/profile.html', context)
+
+
+def applicants(request):
+    candidates = Candidates.objects.all()
+
+    return render(request,'Users/profile.html',{'candidates': candidates})
