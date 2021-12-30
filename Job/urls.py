@@ -22,6 +22,6 @@ urlpatterns = [
     path('Job/<int:pk>/update/',JobUpdateView.as_view(), name ="update"),
     path('Job/<int:pk>/delete', JobDeleteView.as_view(),name ="Job-delete"),
     path('Job/<int:pk>/Apply', views.ApplyPage, name='apply'),
-    path('Job/results/', views.search_view, name='search'),
+    path('Job/results/<slug:query>', views.search_view, name='search'),
     
     ]

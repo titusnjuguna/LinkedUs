@@ -53,7 +53,7 @@ def job_detail(request, year, month, day, job):
 
 def search_view(request):
     search_job = SearchForm()
-    query = None
+    query = []
     results = []
     if 'query' in request.GET:
         search_job = SearchForm(request.GET)
@@ -62,9 +62,6 @@ def search_view(request):
             results = Jobs.published.annotate(
                 search=SearchVector('location', 'experience', 'title'),).filter(search=query)
     return render(request, 'Job/search_results.html', {'query': query, 'results': results})
-
-
-
 
 
 class JobsListView(ListView):
