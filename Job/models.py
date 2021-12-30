@@ -34,6 +34,8 @@ unique_for_date='publish')
     updated = models.DateTimeField(auto_now = True)
     status =  models.CharField(max_length=15,default='draft',choices= STATUS_CHOICES)
     #objects = models.Manager()
+   
+
 
     class Meta:
         ordering = ('-publish',)
@@ -59,6 +61,7 @@ class Candidates(models.Model):
     email = models.CharField(max_length=200, null=True)
     resume = models.FileField(null=True)
     cover = models.TextField()
+    job = models.ForeignKey(Jobs,on_delete= models.CASCADE , related_name='applied')
     
     def __str__(self):
         return str(self.name)

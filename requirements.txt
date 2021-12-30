@@ -1,54 +1,16 @@
-
-Usage:   
-  pip3 <command> [options]
-
-Commands:
-  install                     Install packages.
-  download                    Download packages.
-  uninstall                   Uninstall packages.
-  freeze                      Output installed packages in requirements format.
-  list                        List installed packages.
-  show                        Show information about installed packages.
-  check                       Verify installed packages have compatible dependencies.
-  config                      Manage local and global configuration.
-  search                      Search PyPI for packages.
-  wheel                       Build wheels from your requirements.
-  hash                        Compute hashes of package archives.
-  completion                  A helper command used for command completion.
-  debug                       Show information useful for debugging.
-  help                        Show help for commands.
-
-General Options:
-  -h, --help                  Show help.
-  --isolated                  Run pip in an isolated mode, ignoring
-                              environment variables and user configuration.
-  -v, --verbose               Give more output. Option is additive, and can be
-                              used up to 3 times.
-  -V, --version               Show version and exit.
-  -q, --quiet                 Give less output. Option is additive, and can be
-                              used up to 3 times (corresponding to WARNING,
-                              ERROR, and CRITICAL logging levels).
-  --log <path>                Path to a verbose appending log.
-  --proxy <proxy>             Specify a proxy in the form
-                              [user:passwd@]proxy.server:port.
-  --retries <retries>         Maximum number of retries each connection should
-                              attempt (default 5 times).
-  --timeout <sec>             Set the socket timeout (default 15 seconds).
-  --exists-action <action>    Default action when a path already exists:
-                              (s)witch, (i)gnore, (w)ipe, (b)ackup, (a)bort.
-  --trusted-host <hostname>   Mark this host or host:port pair as trusted,
-                              even though it does not have valid or any HTTPS.
-  --cert <path>               Path to alternate CA bundle.
-  --client-cert <path>        Path to SSL client certificate, a single file
-                              containing the private key and the certificate
-                              in PEM format.
-  --cache-dir <dir>           Store the cache data in <dir>.
-  --no-cache-dir              Disable the cache.
-  --disable-pip-version-check
-                              Don't periodically check PyPI to determine
-                              whether a new version of pip is available for
-                              download. Implied with --no-index.
-  --no-color                  Suppress colored output
-  --no-python-version-warning
-                              Silence deprecation warnings for upcoming
-                              unsupported Pythons.
+asgiref==3.4.0
+autopep8==1.5.7
+Django==3.2.4
+django-bootstrap-form==3.4
+django-ckeditor==6.1.0
+django-crispy-forms==1.12.0
+django-filter==2.4.0
+django-js-asset==1.2.2
+django-subcommands==2020.12.3
+djangorestframework==3.12.4
+Pillow==8.2.0
+psycopg2-binary==2.9.1
+pycodestyle==2.7.0
+pytz==2021.1
+sqlparse==0.4.1
+toml==0.10.2
