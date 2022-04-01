@@ -18,9 +18,8 @@ from django.contrib.auth import login, logout, authenticate
 
 def home(request):
     job_list = Jobs.published.all()
-    search_job = SearchForm()
-
-    return render(request, 'Job/index.html', {'job_list': job_list, 'search_job': search_job})
+    """search_job = SearchForm() 'search_job': search_job"""
+    return render(request, 'Job/Post/index.html', {'job_list': job_list})
 
 
 def ApplyPage(request):
@@ -31,7 +30,7 @@ def ApplyPage(request):
             form.save()
             return redirect('Job-home')
     context = {'form': form}
-    return render(request, 'Job/apply.html', context)
+    return render(request, 'Job/Post/apply.html', context)
 
 
 def job_detail(request, year, month, day, job):
@@ -47,7 +46,7 @@ def job_detail(request, year, month, day, job):
             App_form.save()
             return redirect('Job-home')
 
-    return render(request, 'Job/Job_detail.html',
+    return render(request, 'Job/Post/Job_detail.html',
                   {'job': job, 'App_form': App_form})
 
 
@@ -61,7 +60,7 @@ def search_view(request):
             query = search_job.cleaned_data['query']
             results = Jobs.published.annotate(
                 search=SearchVector('location', 'experience', 'title'),).filter(search=query)
-    return render(request, 'Job/search_results.html', {'query': query, 'results': results})
+    return render(request, 'Job/Post/search_results.html', {'query': query, 'results': results})
 
 
 class JobsListView(ListView):
@@ -100,7 +99,7 @@ def post_job(request):
             return redirect('Job-detail')
     else:
         post_form = JobCreateForm()
-    return render(request, 'Job/jobs_form.html', {'post_form': post_form})
+    return render(request, 'Job/Post/jobs_form.html', {'post_form': post_form})
 
 
 class JobUpdateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
