@@ -56,10 +56,9 @@
                     <a href="about.html" class="nav-item nav-link">About</a>
                     <a href="{% url 'Login'%}" class="nav-item nav-link">Our Services</a>
                     {% if user.is_authenticated %}
-                    <div>
-                        <a href="{% url 'Login'%}" class="nav-item nav-link"><img src="{% static 'img/total 8.png'%}"
+                    <a href="{% url 'Login'%}" class="nav-item nav-link"><img src="{% static 'img/total 8.png'%}"
                                 style="width:100px;height:100px;border-radius: 50%;"></a>
-                    </div>
+                    
                     
                         
                     {% else %}
