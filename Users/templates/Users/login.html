@@ -1,10 +1,11 @@
-{% extends "../Job/base.html"%}
+{% extends "Job/base.html"%}
 {% load crispy_forms_tags %}
-{% block content%}
 {% load bootstrap %}
+{% block body %}
+
 <div class="container">
-  <div class="card" style="width:25em;height:28em;position: absolute;top:40%;left:50%;transform: translate(-40%,-50%);">
-    <!--div class="card-title">Welcome Back</div-->
+  <!--div class="card" style="width:25em;height:28em;position: absolute;top:40%;left:50%;transform: translate(-40%,-50%);"-->
+    <div class="card-title">Welcome Back</div>
     <div class="card-body">
       <form method ="POST", enctype="multipart/form-data">
     {%csrf_token%}
@@ -26,6 +27,6 @@
   
    </div>
   </div>
-  </div>
+  <!--/div-->
 </div>
-{% endblock content %}
+{% endblock %}

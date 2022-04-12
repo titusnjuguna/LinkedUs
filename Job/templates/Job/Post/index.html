@@ -214,22 +214,19 @@
                     <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-1.jpg" alt=""
                       style="width: 80px; height: 80px;">
                     <div class="text-start ps-4">
-                      <h5 class="mb-3">{{job.title}</h5>
-                      <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>New York,
-                        USA</span>
-                      <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
-                      <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                        $456</span>
+                      <h5 class="mb-3">{{job.title}}</h5>
+                      <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{job.location|title}}</span>
+                      <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{job.job_type}}</span>
+                      <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>${{job.salary}}</span>
                     </div>
                   </div>
                   <div
                     class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                     <div class="d-flex mb-3">
                       <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
-                      <a class="btn btn-primary" href="">Apply Now</a>
+                      <a class="btn btn-primary" href="{{job.get_absolute_url}}">Apply Now</a>
                     </div>
-                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Line: 01 Jan,
-                      2045</small>
+                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Line:{{job.publish}} </small>
                   </div>
                 </div>
               </div>
@@ -287,8 +284,32 @@
             <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
             <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
             <div class="d-flex align-items-center">
-              <img class="img-fluid flex-shrink-0 rounded" src="{% static 'img/mpesa 7.png'%}"
+              <img class="img-fluid flex-shrink-0 rounded" src="{% static 'img/equity 2.png'%}"
                 style="width: 50px; height: 50px;">
+              <div class="ps-3">
+                <h5 class="mb-1">Equity PLC.</h5>
+                <small>Profession</small>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-item bg-light rounded p-4">
+            <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+            <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+            <div class="d-flex align-items-center">
+              <img class="img-fluid flex-shrink-0 rounded" src="{% static 'img/equity 2.png'%}"
+                style="width: 50px; height: 50px;border-radius:50%;">
+              <div class="ps-3">
+                <h5 class="mb-1">Equity PLC.</h5>
+                <small>Profession</small>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-item bg-light rounded p-4">
+            <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+            <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+            <div class="d-flex align-items-center">
+              <img class="img-fluid flex-shrink-0 rounded" src="{% static 'img/mpesa 7.png'%}"
+                style="width: 50px; height: 50px;border-radius:50%;">
               <div class="ps-3">
                 <h5 class="mb-1">Safaricom Plc.</h5>
                 <small>Profession</small>
@@ -300,7 +321,7 @@
             <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
             <div class="d-flex align-items-center">
               <img class="img-fluid flex-shrink-0 rounded" src="{% static 'img/gk1.png'%}"
-                style="width: 50px; height: 50px;">
+                style="width: 50px; height: 50px;border-radius:50%;">
               <div class="ps-3">
                 <h5 class="mb-1">Govt. of Kenya</h5>
                 <small>Profession</small>

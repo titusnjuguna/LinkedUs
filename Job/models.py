@@ -1,3 +1,4 @@
+from email.mime import application
 from django.db import models
 from django.db.models.fields.related import ForeignKey
 from django.utils import timezone
@@ -12,6 +13,23 @@ class PublishedManager(models.Manager):
         return super(PublishedManager, self).get_queryset().filter(status='published')
 
 # Create your models here.
+class Candidates(models.Model):
+    category = (
+        ('Male', 'male'),
+        ('Female', 'female'),
+        ('Other', 'other'),
+    )
+    name = models.CharField(max_length=200, null=True)
+    dob = models.DateField(null=True)
+    gender = models.CharField(max_length=200, null=True, choices=category)
+    mobile = models.CharField(max_length=200, null=True)
+    email = models.CharField(max_length=200, null=True)
+    resume = models.FileField(null=True)
+    cover = models.TextField()
+       
+    def __str__(self):
+        return str(self.name)
+
 class Jobs(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
@@ -27,15 +45,15 @@ class Jobs(models.Model):
     qualification = models.TextField(max_length=2000, null=True, blank=True)
     job_type = models.CharField(max_length=30, null=True, blank=True)
     salary = models.DecimalField(max_digits=10, null=True, blank=True, decimal_places=0)
+    total_opening = models.DecimalField(max_digits=100,null=True, blank=True, decimal_places=0)
     location = models.CharField(max_length=30, null=True, blank=True)
     slug = models.SlugField(max_length=250,unique_for_date='publish')
     publish = models.DateTimeField(default=timezone.now)
     updated = models.DateTimeField(auto_now = True)
     status =  models.CharField(max_length=15,default='draft',choices= STATUS_CHOICES)
-    #objects = models.Manager()
-   
-
-
+    applicants = models.ManyToManyField(Candidates)
+     
+    
     class Meta:
         ordering = ('-publish',)
    
@@ -45,24 +63,3 @@ class Jobs(models.Model):
     def get_absolute_url(self):
         return reverse('Job:Job-detail',
         args=[self.publish.year,self.publish.month,self.publish.day, self.slug])
-
-
-class Candidates(models.Model):
-    category = (
-        ('Male', 'male'),
-        ('Female', 'female'),
-        ('Other', 'other'),
-    )
-    name = models.CharField(max_length=200, null=True)
-    dob = models.DateField(null=True)
-    gender = models.CharField(max_length=200, null=True, choices=category)
-    mobile = models.CharField(max_length=200, null=True)
-    email = models.CharField(max_length=200, null=True)
-    resume = models.FileField(null=True)
-    cover = models.TextField()
-    job = models.ForeignKey(Jobs,on_delete= models.CASCADE , related_name='applied')
-    
-    def __str__(self):
-        return str(self.name)
-
-

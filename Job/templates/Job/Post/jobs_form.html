@@ -1,20 +1,18 @@
-{% extends "../Job/base.html"%}
+{% extends 'Job/base.html'%}
 {% load crispy_forms_tags %}
-{% block content %}
+{% load static %}
+{% block body %}
 <div class="container">
     <form  method="POST" enctype="multipart/form-data" style='padding: 10px 20px;'>
         {% csrf_token %}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">Create Post</legend> 
-                    {{form.media}}
-                    {{post_form.as_p}}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="Submit">Post</button>
-            </div>
-        </form>
+            
+            {{post_form.as_p}}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="Submit">Post</button>
+        </div>
+    </form>
 </div>  
-<div class="jumbotron">
-
-</div>
-{% endblock content %}
+{% endblock body %}

@@ -7,7 +7,6 @@ from django.http import request, HttpResponse
 from django.contrib.postgres.search import SearchVector
 from django.contrib import messages
 from django.db.models import Q
-from .serializers import *
 from .forms import *
 from .models import Jobs
 from django.contrib.auth.models import User
@@ -33,21 +32,34 @@ def ApplyPage(request):
     return render(request, 'Job/Post/apply.html', context)
 
 
+def post_job(request):
+    if request.method == 'POST':
+        post_form = JobCreateForm(request.POST)
+        if post_form.is_valid:
+            post_form.save()
+            return redirect('Job-detail')
+    else:
+        post_form = JobCreateForm()
+    return render(request, 'Job/Post/jobs_form.html', {'post_form': post_form})
+
 def job_detail(request, year, month, day, job):
     job = get_object_or_404(Jobs, slug=job,
                             status='published',
                             publish__year=year,
                             publish__month=month,
                             publish__day=day)
-    App_form = ApplyForm()
+    Apply_form = ApplyForm()
     if request.method == 'POST':
-        App_form = ApplyForm(request.FILES, data=request.POST)
-        if App_form.is_valid():
-            App_form.save()
+        Apply_form = ApplyForm(request.POST,request.FILES)
+        if Apply_form.is_valid():
+            cd = ApplyForm.cleaned_data()
+            Apply_form.save()
             return redirect('Job-home')
+    else:
+        Apply_form=ApplyForm()
 
     return render(request, 'Job/Post/Job_detail.html',
-                  {'job': job, 'App_form': App_form})
+                  {'job': job, 'Apply_form': Apply_form})
 
 
 def search_view(request):
@@ -91,15 +103,6 @@ class UserJobsListView(ListView):
         return super().form_valid(form)"""
 
 
-def post_job(request):
-    if request.method == 'POST':
-        post_form = JobCreateForm(request.POST)
-        if post_form.is_valid:
-            post_form.save()
-            return redirect('Job-detail')
-    else:
-        post_form = JobCreateForm()
-    return render(request, 'Job/Post/jobs_form.html', {'post_form': post_form})
 
 
 class JobUpdateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
